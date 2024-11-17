@@ -1,0 +1,74 @@
+Problem Statement:
+The ATM project aims to simulate a basic Automated Teller Machine (ATM) system, enabling users to perform key banking operations such as balance inquiry, cash withdrawal, deposit, and fund transfer. The system requires users to authenticate securely using their account number and PIN before accessing any functionalities. After successful authentication, users can check their account balance, withdraw funds (subject to balance limits), deposit money, and transfer funds between accounts. The system will also display a transaction history, showing recent activities like deposits and withdrawals. Error handling is incorporated to manage invalid inputs or failed transactions, ensuring that the system operates smoothly and securely. The primary goal is to replicate essential ATM operations in a secure and user-friendly software environment.
+
+ Algorithm for ATM Machine with Transaction History:
+
+1. Initialize the ATM Class:
+   - Create an ATM class that includes account number, PIN, balance, and a transaction history list.
+   - Define methods for initialization, authentication, balance checking, cash withdrawal, deposit, PIN change, and transaction history.
+2. Define '__init__' Method:
+   - Initialize the ATM object with an empty list for transaction history.
+3. Define 'ini' Method:
+   - Set up account details with account number, PIN, and balance.
+4. Define 'verify' Method:
+   - This method takes an account number and PIN as inputs and checks if they match the stored values.
+5. Define 'balance' Method:
+   - Return the current balance of the user.
+6. Define 'withdraw' Method:
+   - Check if the withdrawal amount is greater than the current balance.
+   - If yes, print an error message indicating insufficient balance.
+   - If no, subtract the amount from the balance and add a record to the transaction history.
+   - Return the updated balance.
+7. Define 'deposit' Method:
+   - Add the deposit amount to the current balance and update the transaction history.
+   - Return the updated balance.
+8. Define 'view_transaction_history' Method:
+   - If no transactions have been made, print a message indicating that.
+   - Otherwise, print the list of transactions.
+
+ ATM Menu Algorithm:
+
+1. Display ATM Menu Options:
+   - Display options for balance check, cash withdrawal, deposit, PIN change, transaction history, and exit.
+2. User Input for Option Selection:
+   - Prompt the user to select an option from the menu.
+   - Based on the selected option, proceed with the corresponding functionality.
+3. Check Balance:
+   - Prompt the user for the account number and PIN.
+   - Verify the credentials using the `verify` method.
+   - If verified, display the current balance using the `balance` method.
+   - If not, show an error message.
+4. Cash Withdrawal:
+   - Prompt the user for the account number and PIN.
+   - Verify the credentials.
+   - If verified, prompt for the amount to withdraw.
+   - Perform withdrawal and display the updated balance.
+   - Record the transaction in the history.
+   - If credentials are incorrect, show an error message.
+5. Cash Deposit:
+   - Prompt the user for the account number and PIN.
+   - Verify the credentials.
+   - If verified, prompt for the deposit amount.
+   - Perform deposit and display the updated balance.
+   - Record the transaction in the history.
+   - If credentials are incorrect, show an error message.
+6. PIN Change:
+   - Prompt the user for the account number and PIN.
+   - Verify the credentials.
+   - If verified, prompt the user for a new PIN and update it.
+   - Record the PIN change in the transaction history.
+   - If credentials are incorrect, show an error message.
+7. View Transaction History:
+   - Prompt the user for the account number and PIN.
+   - Verify the credentials.
+   - If verified, display the transaction history.
+   - If no transactions, display an appropriate message.
+   - If credentials are incorrect, show an error message.
+8. Exit:
+   - If the user selects the exit option, end the program.
+9. Invalid Option Handling:
+   - If the user selects an invalid option, display an error message and prompt them to try again.
+
+Conclusion for the ATM Machine Project:
+
+This project successfully simulates basic ATM functions like balance inquiry, cash withdrawal, deposit, PIN change, and transaction history. By ensuring secure user authentication and handling errors such as insufficient balance, it provides a practical and user-friendly experience. The project demonstrates key concepts in secure transactions, data management, and system design. It can be further improved with more advanced features and integrations, making it a strong foundation for future banking-related projects.
