@@ -1,0 +1,134 @@
+# ATM Machine with Transaction History
+# Initialize ATM with Account Number, PIN, and Balance
+
+class ATM:
+    def __init__(self):
+        self.transaction_history = []  # Initialize transaction history list
+
+    def ini(self, accountnumber, pin, balance):
+        self.an = accountnumber
+        self.pin = pin 
+        self.bl = balance
+   
+    def verify(self, a, b):
+        if a == self.an and b == self.pin:
+            return True
+        return False
+
+    def balance(self):
+        return self.bl
+
+    def withdraw(self, amt):
+        if amt > self.bl:
+            print("Insufficient balance!")
+        else:
+            self.bl -= amt  # Deduct the amount from balance
+            self.transaction_history.append(f"Withdrew: {amt}")  # Record transaction
+            print(f"Withdrawn {amt} successfully.")
+        return self.bl
+
+    def deposit(self, amt):
+        self.bl += amt  # Add the amount to balance
+        self.transaction_history.append(f"Deposited: {amt}")  # Record transaction
+        print(f"Deposited {amt} successfully.")
+        return self.bl
+
+    def view_transaction_history(self):
+        if not self.transaction_history:
+            print("No transactions yet.")
+        else:
+            print("Transaction History:")
+            for transaction in self.transaction_history:
+                print(transaction)
+
+
+# Creating multiple ATM accounts
+a1 = ATM()
+a1.ini(1123456789, 1234, 1500)
+
+a2 = ATM()
+a2.ini(1223456789, 2134, 3000)
+
+a3 = ATM()
+a3.ini(1233456789, 3124, 2350)
+
+# List of accounts
+accounts = [a1, a2, a3]
+
+# ATM menu
+while True:
+    print("\n\tATM Menu")
+    print("1. Check Balance")
+    print("2. Cash Withdrawal")
+    print("3. Cash Deposit")
+    print("4. PIN Change")
+    print("5. Transaction History")
+    print("6. Exit")
+
+    n = int(input("Enter the option: "))
+
+    if n == 1:  # Check Balance
+        a = int(input("Enter account number: "))
+        b = int(input("Enter PIN number: "))
+        for i in accounts:
+            if i.verify(a, b):
+                print("Verified Successfully!")
+                print("Current Balance:", i.balance())
+                break
+        else:
+            print("Invalid Account number or PIN! Please verify.")
+
+    elif n == 2:  # Cash Withdrawal
+        a = int(input("Enter account number: "))
+        b = int(input("Enter PIN number: "))
+        for i in accounts:  
+            
+            if i.verify(a, b):
+                amt = float(input("Enter the amount: "))
+                print("Withdraw successful.")
+                print("Current Balance:", i.withdraw(amt))
+                break
+        else:
+            print("Invalid Account number or PIN! Please verify.")
+
+    elif n == 3:  # Cash Deposit
+        a = int(input("Enter account number: "))
+        b = int(input("Enter PIN number: "))
+        for i in accounts:
+            if i.verify(a, b):
+                amt = float(input("Enter the amount to deposit: "))
+                print("Deposit successful.")
+                print("Current Balance:", i.deposit(amt))
+                break
+        else:
+            print("Invalid Account number or PIN! Please verify.")
+
+    elif n == 4:  # PIN Change
+        a = int(input("Enter account number: "))
+        b = int(input("Enter PIN number: "))
+        for i in accounts:
+            if i.verify(a, b):
+                new_pin = int(input("Enter new PIN: "))
+                i.pin = new_pin
+                i.transaction_history.append("PIN changed.")
+                print("PIN changed successfully!")
+                break
+        else:
+            print("Invalid Account number or PIN! Please verify.")
+
+    elif n == 5:  # Transaction History
+        a = int(input("Enter account number: "))
+        b = int(input("Enter PIN number: "))
+        for i in accounts:
+            if i.verify(a, b):
+                i.view_transaction_history()
+                break
+        else:
+            print("Invalid Account number or PIN! Please verify.")
+
+    elif n == 6:  # Exit
+        print("Exiting...")
+        break
+
+    else:
+        print("Invalid option! Please try again.")
